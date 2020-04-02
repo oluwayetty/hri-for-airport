@@ -41,15 +41,16 @@ def front_sonar():
         leftTouched = p[4]>0    # left hand sensor
         rightTouched = p[5]>0    # right hand sensor
 
-        response = "left hand" if leftTouched else "right hand"
-        if leftTouched or rightTouched:
-            pepper_cmd.robot.say("You touched my {}, watch me move my head left to right".format(response))
-            yaw = 0.0 # horizontal, left to right
-            # pitch = 1.0 #  vertical, up to down
-            tm = 1.5
-            pepper_cmd.robot.headPose(yaw,0.5,tm)
-            pepper_cmd.robot.headPose(yaw,-0.2,tm)
-            pepper_cmd.robot.headPose(yaw,0.0,tm)
+        if leftTouched:
+            pepper_cmd.robot.say("You touched my left hand, watch me move my head left to right, and raise my left arm")
+            move_head_left_to_right()
+            pepper_cmd.robot.raiseArm(which = 'L')
+
+        elif rightTouched:
+            pepper_cmd.robot.say("You touched my right hand, watch me move my head left to right, and raise my right arm")
+            move_head_left_to_right()
+            pepper_cmd.robot.raiseArm(which = 'R')
+
 
 def back_sonar():
     personHere = False
@@ -60,7 +61,7 @@ def back_sonar():
 
         personHere = p[2]>0.0 and p[2]<1.0   # front sonar (0.0 means no value)
 
-    pepper_cmd.robot.say("i see you, touch my head")
+    pepper_cmd.robot.say("I see you, touch my head")
 
     headTouched = False
     while not headTouched:
@@ -70,6 +71,14 @@ def back_sonar():
 
         if headTouched:
             pepper_cmd.robot.say("who's behind me?")
+
+def move_head_left_to_right():
+    yaw = 0.0 # horizontal, left to right
+    # pitch = 1.0 #  vertical, up to down
+    tm = 1.5
+    pepper_cmd.robot.headPose(yaw,0.5,tm)
+    pepper_cmd.robot.headPose(yaw,-0.2,tm)
+    pepper_cmd.robot.headPose(yaw,0.0,tm)
 
 if __name__ == "__main__":
     main()
