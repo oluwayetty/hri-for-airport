@@ -5,7 +5,7 @@ sys.path.append(os.getenv('PEPPER_TOOLS_HOME')+'/cmd_server')
 import pepper_cmd
 from pepper_cmd import *
 
-begin()
+# begin()
 
 pepper_cmd.robot.startSensorMonitor()
 
@@ -38,4 +38,4 @@ pepper_cmd.robot.say("Yasssss, I found you")
 
 pepper_cmd.robot.stopSensorMonitor()
 
-end()
+# end()

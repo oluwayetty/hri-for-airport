@@ -1,4 +1,4 @@
-import os, sys, random, argparse
+import os, sys, random, argparse, time
 
 sys.path.append(os.getenv('PEPPER_TOOLS_HOME')+'/cmd_server')
 
@@ -6,22 +6,23 @@ import pepper_cmd
 from pepper_cmd import *
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--value", type=float, default=1.1,
-                        help="Sensor measurement")
-    parser.add_argument("--duration", type=float, default=3.2,
-                        help="Duration of the event")
+    personHere = False
+    while not personHere:
+        pepper_cmd.robot.setSpeed(0,0,0.5,0.2, False) # only rotation
+        p = pepper_cmd.robot.sensorvalue()
+        personHere = p[1]>0.0 and p[1]<1.0   # front sonar (0.0 means no value)
 
-    args = parser.parse_args()
+        if personHere:
+            check_sonar_duration()
 
-    sensorChecked = check_parser_values(args.value, args.duration)
-    if sensorChecked:
-        print('all checked')
-        pepper_cmd.robot.dance()
-
-        pepper_get_feedback()
-    else:
-        pepper_cmd.robot.say("I can't take any action")
+def check_sonar_duration():
+    seconds = 0
+    while seconds != 3:
+        time.sleep(1)
+        print(">>>>>>>>>>>>>>>>>>>>> {}".format(seconds))
+        seconds += 1
+    pepper_cmd.robot.dance()
+    pepper_get_feedback()
 
 def check_parser_values(distance,duration):
     personHere = False
