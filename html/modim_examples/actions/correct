@@ -1,0 +1,15 @@
+TEXT_title
+<*,*,it,*>: Bravo
+<*,*,*,*>:  Great job
+----
+IMAGE
+<*, *, *, *>:  img/welldone.png
+----
+TTS
+<*,*,it,*>: Bravo! Riposta esatta.
+<*,*,*,*>:  Good Job, correct answer
+----
+TEXT_default
+<*,*,*,*>: WONDERFUL!!!
+<*,*,it,*>: Bravo! Riposta esatta.
+----

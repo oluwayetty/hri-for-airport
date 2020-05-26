@@ -1,0 +1,15 @@
+TEXT_title
+<*,*,it,*>: Mi displace! Riposta sbagliata
+<*,*,*,*>:  Sorry but wrong answer
+----
+IMAGE
+<*, *, *, *>:  img/sad.png
+----
+TTS
+<*,*,it,*>: Mi displace! Riposta sbagliata
+<*,*,*,*>:  Sorry, your answer is wrong. Try again!
+----
+TEXT_default
+<*,*,*,*>: &nbsp;
+<*,*,it,*>: Mi displace! Riposta sbagliata
+----

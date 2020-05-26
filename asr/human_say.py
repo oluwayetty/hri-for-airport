@@ -12,9 +12,9 @@ def main():
                         help="Robot IP address.  On robot or Local Naoqi: use '127.0.0.1'.")
     parser.add_argument("--pport", type=int, default=9559,
                         help="Naoqi port number")
-    parser.add_argument("--sentence", type=str, default="hello",
+    parser.add_argument("--sentence", type=str, default="yes",
                         help="Sentence said by human")
-    
+
     args = parser.parse_args()
     pip = args.pip
     pport = args.pport
