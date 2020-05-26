@@ -7,6 +7,7 @@ def main():
 
     pepper_ip = os.environ['PEPPER_IP']
     pepper_port = 9559
+    # pepper_port = 9559
 
     try:
         connection_url = 'tcp://'+pepper_ip+':'+str(pepper_port)
