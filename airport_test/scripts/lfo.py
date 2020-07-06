@@ -16,31 +16,38 @@ def lfo_reached():
 
 def show_lfo_office(pepper):
     pepper.goToPosture('StandZero',0.2)
-    joint_names = ["HeadYaw", "HeadPitch",
-    "LShoulderPitch", "LShoulderRoll", "LElbowYaw", "LElbowRoll", "LWristYaw",
-    "RShoulderPitch", "RShoulderRoll", "RElbowYaw", "RElbowRoll", "RWristYaw",
-    "HipRoll","HipPitch","KneePitch"]
-    joint_angles = [0.1,-0.2,1.5,0,0,0,0,1.5,0,0,0,0,0,-0.2,0]
-    pepper.setAngles(joint_names,joint_angles,0.2)
+
+    jointsNames = {
+    "HeadYaw":0.1,
+    "HeadPitch":-0.2,
+    "LShoulderPitch":1.5,
+    "LShoulderRoll":0,
+    "LElbowYaw":0,
+    "LElbowRoll":0,
+    "LWristYaw":0,
+    "RShoulderPitch":1.5,
+    "RShoulderRoll":0,
+    "RElbowYaw":0,
+    "RElbowRoll":0,
+    "RWristYaw":0,
+    "HipRoll":0,
+    "HipPitch":-0.2,
+    "KneePitch":0
+    }
+
+    pepper.setAngles(jointsNames.keys(),jointsNames.values(),0.2)
     pepper.moveTo(6,7,0.5,speed=20)
-    joint_angles = [0.1,-0.2,-0.4,0.5,0.1,0,0,1.5,0,0,0,0,0,0,0]
-    pepper.setAngles(joint_names,joint_angles,0.1   )
+    jointsNames['LShoulderPitch']=-0.4
+    jointsNames['LShoulderRoll']=0.5
+    jointsNames['LElbowYaw']=0.1
+    jointsNames['HipPitch']=0
+    pepper.setAngles(jointsNames.keys(),jointsNames.values(),0.1   )
     time.sleep(3)
     return
 
 
 
-def load_lfo(session,mws):
-#if __name__ == '__main__':
-    # connect to local MODIM server
-
-    #session= app.session
-    #memory_service = session.service('ALMemory')
-
-    simulation_manager = SimulationManager()
-    client = simulation_manager.launchSimulation(gui=True)
-    pepper = simulation_manager.spawnPepper(client,spawn_ground_plane=True)
+def load_lfo(session,mws,pepper):
 
     show_lfo_office(pepper)
-    simulation_manager.stopSimulation(client)
     mws.run_interaction(lfo_reached)

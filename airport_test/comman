@@ -1,0 +1,6 @@
+pip install --upgrade pip
+pip install --upgrade numpy
+pip install --user qibullet==1.0.12
+pip install pandas
+
+#source comman

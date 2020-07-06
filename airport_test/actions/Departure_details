@@ -1,0 +1,37 @@
+# Depature Details
+
+TEXT_title
+<*,*,it,*>: Departure Details
+<*,*,*,*>:  Departure Details
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  You have chosen Depatures, How may I help you?
+----
+ASR
+<*,*,it,*>: {'LFO' : ['Where is the Lost and Found Office', 'Lost and Found Office','LFO','Lost Found Offices'],
+'CST':['Customer Service', 'Can I meet any CS team representative','Where is the nearest CS','nearest CS'],
+'ATM':['nearest ATM','ATM'],
+'FI':['flight information','Check in counters','flight status'],
+'EFC':['Food mall','Entertainment section','lounges']}
+<*,*,*,*>: {'LFO' : ['Where is the Lost and Found Office', 'Lost and Found Office','LFO','Lost Found Offices'],'CST':['Customer Service', 'Can I meet any CS team representative','Where is the nearest CS','nearest CS'],'ATM':['nearest ATM','ATM'],'FI':['flight information','Check in counters','flight status'],'EFC':['Food mall','Entertainment section','lounges']}
+----
+BUTTONS
+LFO
+<*,*,it,*>: Lost and Found Office
+<*,*,*,*>: Lost and Found Office
+CST
+<*,*,it,*>: Customer Service Team
+<*,*,*,*>: Customer Service Team
+ATM
+<*,*,it,*>: ATM
+<*,*,*,*>:  ATM
+FI
+<*,*,it,*>: Flight Information
+<*,*,*,*>:  Flight Information
+EFC
+<*,*,it,*>: Entertainment and Food Section
+<*,*,*,*>:  Entertainment and Food Section
+----

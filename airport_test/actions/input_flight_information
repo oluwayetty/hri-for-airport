@@ -1,0 +1,12 @@
+# Input for Flight Information
+
+TEXT_title
+<*,*,it,*>: Flight Information
+<*,*,*,*>: Flight Information
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  Please tell me your Airline Initials and Flight Number
+----

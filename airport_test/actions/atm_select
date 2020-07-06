@@ -1,0 +1,30 @@
+# Input for Flight Information
+
+TEXT_title
+<*,*,it,*>: ATM Information
+<*,*,*,*>: ATM Information
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the Bank ATM you are searching
+----
+TEXT_default
+<*,*,*,*>:  Please select the Bank ATM you are searching
+----
+ASR
+<*,*,*,*>:  { 'unicredit': ['UniCredit Bank','UniCredit'],   'bancaditalia': ['Banca dItalia', 'Banca dItalia'],'bnp': ['BNP Paribas'],'sanpaolo':['SanPaolo IMI','SanPaolo'],'axis':['AXIS','AXIS Bank']}
+----
+BUTTONS
+unicredit
+<*,*,*,*>: UniCredit Bank
+bancaditalia
+<*,*,*,*>: Banca d'Italia
+bnp
+<*,*,*,*>: BNP Paribas
+sanpaolo
+<*,*,*,*>: SanPaolo IMI
+axis
+<*,*,*,*>: Axis Bank
+----

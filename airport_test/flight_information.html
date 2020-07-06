@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+
+  <script src="qaws.js"></script>
+
+  <style>
+
+.split{
+
+  height: 80%;
+   width: 50%;
+   position: fixed;
+
+   top: 200px;
+   overflow-x: hidden;
+   padding-top: 10px;
+
+
+}
+.left {
+  top:300px;
+  left: 500px;
+}
+
+/* Control the right side */
+.right {
+  right: 300px;
+
+}
+
+  body {
+      color: darkblue;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      height: 500px; /* You must set a specified height */
+
+  }
+
+  #container {
+      font-size: 40px;
+      width: 150px;
+      margin: 100px auto;
+  }
+
+  #container #stats {
+      margin: 0px auto;
+      width: 410px;
+      font-family: "Courier New", Courier, monospace;
+  }
+
+
+
+    h2 {
+      font-weight: normal;
+      text-align: center;
+
+      font-size: 150%;
+    }
+
+    data {
+      font-weight: normal;
+      text-align: center;
+
+      font-size: 150%;
+    }
+
+
+  input[type=button] {
+    background-color: #A01010; /* Red */
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin:10px 10px 10px 10px;
+    cursor:pointer;
+    width:20%;
+    display: flex;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+      #destination {
+          margin: -50px 0px 75px 0px;
+          text-align: center;
+          font-size: :150%
+      }
+
+      data {
+          font-size: 40px;
+          margin: 4px 0px;
+      }
+
+      sm {
+          font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- status -->
+    <div align='right' id='status'> <font color='red'>NOT CONNECTED</font> </div>
+
+    <!-- image -->
+
+    <p>
+    <div align='center'> <img height=300 id='image_default' src="img/airport fco.jpg" alt="No image"/> </div>
+    </p>
+    <!-- text -->
+
+
+        <div id="container">
+          <div class = 'split left' ><img height=300 id='image_default' src="img/fco ticket.jpeg" alt="No image"/> </div> <br>
+            <div class='split right'>
+            <h2>FLIGHT STATS </h2>
+            <div id="destination"><h2> <data id="text_airline"></data> - <data id="text_fn"></data></div>
+
+            <div id="destination"><data id="text_source"></data> &rarr; <data id="text_destination"></data></div>
+
+            <div id="destination"><data id="text_schdep"></data> &rarr; <data id="text_scharr"></data></div>
+
+            <div id="destination"><data id="text_timedep"></data> &rarr; <data id="text_timearr"></data></div>
+
+
+            <div id="stats">
+                <div><data id="text_distance"></data>
+                    <sm>miles remaining</sm>
+                </div>
+                <div><data id="text_time"></data>
+                    <sm>minutes left</sm>
+                </div>
+            </div>
+        </div>
+    <!-- Customized Buttons Added by Momo -->
+
+  <!-- ****** SCRIPTS ****** -->
+
+  <script>
+
+    var ip=window.location.hostname;
+    if (ip=='')
+        ip='127.0.0.1';
+    var port = 9100;
+
+    console.log("Trying connection...")
+    wsrobot_init(ip,port);
+
+    function hello() {
+        console.log("runnig interaction...");
+        codews.send("im.robot.say('hello')\n");
+    }
+
+
+
+  </script>
+
+</body>
+</html>

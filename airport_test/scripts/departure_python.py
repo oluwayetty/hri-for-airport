@@ -11,8 +11,6 @@ import qi
 import flight_information
 import lfo
 
-def ATM():
-    print('this is a call for ATM function')
 
 def customer_service():
     print('customer service')
@@ -23,7 +21,7 @@ def entertainment():
     print('entertainment and food section')
 
 
-def departure_file_loaded(session,mws):
+def departure_file_loaded(session,mws,pepper):
 
     # connect to local MODIM server
     '''
@@ -33,21 +31,19 @@ def departure_file_loaded(session,mws):
     #session= app.session
     memory_service = session.service('ALMemory')
 
-    '''simulation_manager = SimulationManager()
-    client = simulation_manager.launchSimulation(gui=True)
-    pepper = simulation_manager.spawnPepper(client,spawn_ground_plane=True)'''
-
     getDepatureAnswer = memory_service.getData('departureAnswer')
     print('********************Depature Answer is ====>',getDepatureAnswer)
 
     if getDepatureAnswer == 'ATM':
-        mws.run_interaction(ATM)
+        x = atm_information_load(session,mws,pepper)
 
     elif getDepatureAnswer == 'LFO':
-        lfo.load_lfo(session,mws)
+        lfo.load_lfo(session,mws,pepper)
+        return True
 
     elif getDepatureAnswer == 'FI':
-        flight_information.flight_information_load(session,mws)
+        x = flight_information.flight_information_load(session,mws,pepper)
+        return x
 
 
     elif getDepatureAnswer == 'CST':

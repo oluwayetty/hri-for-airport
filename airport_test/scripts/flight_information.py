@@ -67,6 +67,8 @@ def load_data(name_airline,flight_number):
         return ('not done',None)
 
 
+
+
 def display_flights_information():
     im.display.loadUrl('flight_information.html')
     get_flight_details = im.robot.memory_service.getData('flights_data')
@@ -90,33 +92,49 @@ def data_not_found():
     im.executeModality('TEXT_default','Sorry I could not find your flight details')
     im.executeModality('text_airline','')
     im.executeModality('text_fn','')
-    time.sleep(1)
+    time.sleep(3)
 
+def happyJouney():
+    im.display.loadUrl('flight_info_showed.html')
 
-'''def getQiApp():
-    try:
-        connection_url = 'tcp://'+os.environ['PEPPER_IP']+':'+str(9559)
-        app = qi.Application(['Say','--qi-url='+connection_url])
-        return app
-    except RuntimeError:
-        print ("Can't connect to Naoqi at ip \"" +os.environ['PEPPER_IP']+ "\" on port " + str(9559) +".\n"
-               "Please check your script arguments. Run with -h option for help.")
-        sys.exit(1)
-'''
+def bye_bye_movement(pepper):
+    pepper.goToPosture('StandZero',0.2)
+
+    jointsNames = {
+    "HeadYaw":0,
+    "HeadPitch":-0.2,
+    "LShoulderPitch":-0.8,
+    "LShoulderRoll":0.7,
+    "LElbowYaw":-0.1,
+    "LElbowRoll":-1.3,
+    "LWristYaw":-0.1,
+    "RShoulderPitch":0,
+    "RShoulderRoll":0,
+    "RElbowYaw":0,
+    "RElbowRoll":0,
+    "RWristYaw":0,
+    "HipRoll":0,
+    "HipPitch":0,
+    "KneePitch":0
+    }
+    bye =0
+    while bye<10:
+        if bye%2==0:
+            jointsNames['LShoulderRoll']=-1.2
+        else:
+            jointsNames['LShoulderRoll']=0.7
+
+        pepper.setAngles(jointsNames.keys(),jointsNames.values(),0.1)
+        bye+=1
+        time.sleep(1)
+    time.sleep(3)
+    return
+
 
 #if __name__=='__main__':
-def flight_information_load(session,mws):
+def flight_information_load(session,mws,pepper):
 
-    # connect to local MODIM server
-    '''
-    mws = ModimWSClient()
-    mws.setDemoPathAuto(__file__)
-    app = getQiApp()
-    app.start()
-    session = app.session
-    '''
     memory_service = session.service('ALMemory')
-
     mws.run_interaction(flight_information)
 
     airline_name = memory_service.getData('airline_name')
@@ -137,11 +155,18 @@ def flight_information_load(session,mws):
     ARRIVAL_TIME            908
     Name: 55, dtype: object
     '''
+
     if status!='not done':
         x = str(data_flights.tolist())
-        print(x)
+
         memory_service.insertData('flights_data',x)
         mws.run_interaction(display_flights_information)
+        mws.run_interaction(happyJouney)
+        bye_bye_movement(pepper)
+        return True
+
+
     else:
         mws.run_interaction(data_not_found)
-        mws.run_interaction(flight_information)
+        time.sleep(2)
+        return False

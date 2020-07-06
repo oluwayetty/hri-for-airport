@@ -8,7 +8,7 @@ from ws_client import *
 import ws_client
 import qi
 import departure_python
-#from qibullet import SimulationManager
+from qibullet import SimulationManager
 
 # Definition of interaction functions
 
@@ -98,19 +98,25 @@ if __name__ == "__main__":
     session= app.session
     memory_service = session.service('ALMemory')
 
-    '''
+
     simulation_manager = SimulationManager()
     client = simulation_manager.launchSimulation(gui=True)
-    pepper= simulation_manager.spawnPepper(client,spawn_ground_plane=True)'''
+    pepper= simulation_manager.spawnPepper(client,spawn_ground_plane=True)
 
-    mws.run_interaction(load_modim)
-    mws.run_interaction(ee_test)
+    def chec():
+        mws.run_interaction(load_modim)
+        mws.run_interaction(ee_test)
 
-    getConvCheck = memory_service.getData('beginConv')
-    if getConvCheck:
-        mws.run_interaction(choose_mode)
-    modeCheck = memory_service.getData('mode')
-    print('mode got',modeCheck)
-    if modeCheck == 'Departures' and getConvCheck:
-        mws.run_interaction(departure_operations)
-        departure_python.departure_file_loaded(session,mws)
+        getConvCheck = memory_service.getData('beginConv')
+        if getConvCheck:
+            mws.run_interaction(choose_mode)
+        modeCheck = memory_service.getData('mode')
+        print('mode got',modeCheck)
+        if modeCheck == 'Departures' and getConvCheck:
+            mws.run_interaction(departure_operations)
+            x = departure_python.departure_file_loaded(session,mws,pepper)
+            if not x:
+                chec()
+            
+
+    chec()
