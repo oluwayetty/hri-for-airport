@@ -10,6 +10,7 @@ import qi
 #from qibullet import SimulationManager
 import flight_information
 import lfo
+import ATM
 
 
 def customer_service():
@@ -35,7 +36,7 @@ def departure_file_loaded(session,mws,pepper):
     print('********************Depature Answer is ====>',getDepatureAnswer)
 
     if getDepatureAnswer == 'ATM':
-        x = atm_information_load(session,mws,pepper)
+        x = ATM.atm_information_load(session,mws,pepper)
 
     elif getDepatureAnswer == 'LFO':
         lfo.load_lfo(session,mws,pepper)

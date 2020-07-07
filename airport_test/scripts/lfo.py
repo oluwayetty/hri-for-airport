@@ -12,6 +12,7 @@ from qibullet import SimulationManager
 
 def lfo_reached():
     im.display.loadUrl('lfo_reached.html')
+    im.executeModality('text_default','This is the <b> LOST AND FOUND OFFICE </b>')
 
 
 def show_lfo_office(pepper):

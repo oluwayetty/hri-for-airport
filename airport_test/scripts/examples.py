@@ -64,7 +64,7 @@ def departure_operations():
         if departure_choice!='timeout':
             im.executeModality('TEXT_default',departure_choice)
             break
-    im.robot.animation('Happy_4')
+    #im.robot.animation('Happy_4')
     im.robot.memory_service.insertData('departureAnswer',departure_choice)
 
 def getQiApp():
@@ -117,6 +117,8 @@ if __name__ == "__main__":
             x = departure_python.departure_file_loaded(session,mws,pepper)
             if not x:
                 chec()
-            
+
 
     chec()
+
+    simulation_manager.stopSimulation(client)

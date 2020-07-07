@@ -6,8 +6,6 @@ sys.path.append(pdir + '/src/GUI')
 
 from ws_client import *
 import ws_client
-import qi
-from qibullet import SimulationManager
 
 
 
@@ -26,10 +24,10 @@ def moveToATM():
 
 def reached_atm():
     #im.display.loadUrl('ATM_search.html')
-    im.executeModality('TEXT_default',im.robot.memory_service.getData('bank_name'))
+    im.executeModality('TEXT_default','<b>'+im.robot.memory_service.getData('bank_name').upper()+'</b>')
     im.executeModality('text_atmfound','Your requested ATM is HERE')
 
-def pointhand(hand='left',pepper):
+def pointhand(pepper,hand='left'):
 
     R_jointsNames = {
     "RShoulderPitch":1.5,
@@ -53,28 +51,11 @@ def pointhand(hand='left',pepper):
     return
 
 
-def getQiApp():
-    try:
-        connection_url = 'tcp://'+os.environ['PEPPER_IP']+':'+str(9559)
-        app = qi.Application(['Say','--qi-url='+connection_url])
-        return app
-    except RuntimeError:
-        print ("Can't connect to Naoqi at ip \"" +os.environ['PEPPER_IP']+ "\" on port " + str(9559) +".\n"
-               "Please check your script arguments. Run with -h option for help.")
-        sys.exit(1)
+#if __name__=='__main__':
+def atm_information_load(session,mws,pepper):
 
 
-if __name__=='__main__':
-#def atm_information_load(session,mws,pepper):
-    mws = ModimWSClient()
-    mws.setDemoPathAuto(__file__)
-    app = getQiApp()
-    app.start()
-    session= app.session
     memory_service = session.service('ALMemory')
-    sm = SimulationManager()
-    client = sm.launchSimulation(gui=True)
-    pepper = sm.spawnPepper(client,spawn_ground_plane=True)
 
     mws.run_interaction(ATM)
     bank_name = memory_service.getData('bank_name')
@@ -99,11 +80,11 @@ if __name__=='__main__':
 
     pepper.moveTo(location[0],location[1],location[2],speed=0.5)
     time.sleep(1)
-    pointhand(hand,pepper)
+    pointhand(hand=hand,pepper=pepper)
     mws.run_interaction(reached_atm)
     time.sleep(3)
 
 
-    #mws.run_interaction(happyJouney)
+    mws.run_interaction(atmReached)
 
     #return False

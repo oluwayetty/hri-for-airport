@@ -47,7 +47,7 @@ def flight_information():
 
 
 def load_data(name_airline,flight_number):
-    dt = pd.DataFrame(pd.read_csv('../database/flights/flights.csv',usecols=['AIRLINE','FLIGHT_NUMBER','ORIGIN_AIRPORT','DESTINATION_AIRPORT',
+    dt = pd.DataFrame(pd.read_csv('/home/robot/playground/Airport-Scenario-HRI/airport_test/database/flights/flights.csv',usecols=['AIRLINE','FLIGHT_NUMBER','ORIGIN_AIRPORT','DESTINATION_AIRPORT',
     'SCHEDULED_DEPARTURE', 'DEPARTURE_TIME','SCHEDULED_TIME',
     'AIR_TIME','DISTANCE','SCHEDULED_ARRIVAL', 'ARRIVAL_TIME'],nrows=100))
 
@@ -161,6 +161,7 @@ def flight_information_load(session,mws,pepper):
 
         memory_service.insertData('flights_data',x)
         mws.run_interaction(display_flights_information)
+        time.sleep(5)
         mws.run_interaction(happyJouney)
         bye_bye_movement(pepper)
         return True
