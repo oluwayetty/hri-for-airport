@@ -7,7 +7,7 @@ sys.path.append(pdir + '/src/GUI')
 from ws_client import *
 import ws_client
 import qi
-import flight_information
+import arrival_movement
 
 def arrival_file_loaded(session,mws,pepper):
 
@@ -22,9 +22,6 @@ def arrival_file_loaded(session,mws,pepper):
     getArrivalAnswer = memory_service.getData('arrivalAnswer')
     print('********************Arrival Answer is ====>',getArrivalAnswer)
 
-    # if getDepatureAnswer == 'FT':
-    #     x = ATM.atm_information_load(session,mws,pepper)
-    #
-    # elif getDepatureAnswer == 'CBL':
-    #     lfo.load_lfo(session,mws,pepper)
-    #     return True
+    if getArrivalAnswer == 'FT':
+        arrival_movement.load_trolley_direction(session,mws,pepper)
+        return True

@@ -39,7 +39,7 @@ def departure_file_loaded(session,mws,pepper):
         x = ATM.atm_information_load(session,mws,pepper)
 
     elif getDepatureAnswer == 'LFO':
-        lfo.load_lfo(session,mws,pepper)
+        lfo.load_lfo(session,mws,pepper) 
         return True
 
     elif getDepatureAnswer == 'FI':
