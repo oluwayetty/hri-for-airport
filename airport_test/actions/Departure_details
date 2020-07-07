@@ -8,7 +8,7 @@ IMAGE_default
 <*, *, *, *>:  img/airport_logo.png
 ----
 TTS
-<*,*,*,*>:  You have chosen Depatures, How may I help you?
+<*,*,*,*>:  You have chosen Departures, How may I help you?
 ----
 ASR
 <*,*,it,*>: {'LFO' : ['Where is the Lost and Found Office', 'Lost and Found Office','LFO','Lost Found Offices'],

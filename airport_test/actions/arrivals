@@ -1,0 +1,26 @@
+# Arrival Details
+
+TEXT_title
+<*,*,it,*>: Arrival Details
+<*,*,*,*>:  Arrival Details
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  You have chosen Arrivals. I hope you had a great flight, How may I help you?
+----
+BUTTONS
+FT
+<*,*,it,*>: Find Trolleys
+<*,*,*,*>: Find Trolleys
+CBL
+<*,*,it,*>: Conveyor belt location
+<*,*,*,*>: Conveyor belt location
+TP
+<*,*,it,*>: Transport spot
+<*,*,*,*>:  Transport spot
+MAP
+<*,*,it,*>: Destination map
+<*,*,*,*>:  Destination map
+----

@@ -28,8 +28,6 @@ def ee_test():
         pepper_hear = im.ask('check_hello_pepper')
         im.executeModality('TEXT_default',pepper_hear)
         front_sensor_value = im.robot.sensorvalue('frontsonar')
-        #print('front_sensor_value ',front_sensor_value)
-        #if pepper_hear=='correct' and (front_sensor_value <=1 and front_sensor_value>0):
         if pepper_hear == 'correct':
             flag=True
             #return True
@@ -66,6 +64,15 @@ def departure_operations():
             break
     #im.robot.animation('Happy_4')
     im.robot.memory_service.insertData('departureAnswer',departure_choice)
+
+def arrival_operations():
+    while True:
+        im.display.loadUrl('arrivals.html')
+        arrival_choice = im.ask('arrivals')
+        if arrival_choice!='timeout':
+            im.executeModality('TEXT_default',arrival_choice)
+            break
+    im.robot.memory_service.insertData('arrivalAnswer',arrival_choice)
 
 def getQiApp():
     try:
@@ -116,6 +123,11 @@ if __name__ == "__main__":
             mws.run_interaction(departure_operations)
             x = departure_python.departure_file_loaded(session,mws,pepper)
             if not x:
+                chec()
+        elif modeCheck == 'Arrivals' and getConvCheck:
+            mws.run_interaction(arrival_operations)
+            callback = arivals.arrival_file_loaded(session,mws,pepper)
+            if not callback:
                 chec()
 
 
