@@ -8,6 +8,7 @@ from ws_client import *
 import ws_client
 import qi
 import departure_python
+import arrivals
 from qibullet import SimulationManager
 
 # Definition of interaction functions
@@ -126,7 +127,7 @@ if __name__ == "__main__":
                 chec()
         elif modeCheck == 'Arrivals' and getConvCheck:
             mws.run_interaction(arrival_operations)
-            callback = arivals.arrival_file_loaded(session,mws,pepper)
+            callback = arrivals.arrival_file_loaded(session,mws,pepper)
             if not callback:
                 chec()
 
