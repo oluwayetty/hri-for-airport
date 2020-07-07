@@ -1,0 +1,30 @@
+# Input for Flight Information
+
+TEXT_title
+<*,*,it,*>: Customer Service
+<*,*,*,*>: Customer Service
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the Airlines Customer Service you are searching
+----
+TEXT_default
+<*,*,*,*>:  Please select the Airlines Customer Service you are searching
+----
+ASR
+<*,*,*,*>:  { 'alitalia': ['Alitalia Airlines'],'lufthansa': ['Lufthansa Airlines'],'emirates': ['Emirates Airlines'],'etihad':['Etihad Airlines'],'airfrance':['Air France Airlines']}
+----
+BUTTONS
+alitalia
+<*,*,*,*>: img/alitalia_logo.jpg
+lufthansa
+<*,*,*,*>: img/lufthansa_logo.jpg
+emirates
+<*,*,*,*>: img/emirates_logo.jpg
+etihad
+<*,*,*,*>: img/etihad_logo.jpg
+airfrance
+<*,*,*,*>: img/airfrance_logo.jpg
+----

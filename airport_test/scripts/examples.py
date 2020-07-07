@@ -29,6 +29,8 @@ def ee_test():
         pepper_hear = im.ask('check_hello_pepper')
         im.executeModality('TEXT_default',pepper_hear)
         front_sensor_value = im.robot.sensorvalue('frontsonar')
+        #print('front_sensor_value ',front_sensor_value)
+        #if pepper_hear=='correct' and (front_sensor_value <=1 and front_sensor_value>0):
         if pepper_hear == 'correct':
             flag=True
             #return True

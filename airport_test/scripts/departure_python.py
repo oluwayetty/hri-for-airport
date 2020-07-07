@@ -11,6 +11,7 @@ import qi
 import flight_information
 import lfo
 import ATM
+import customerService
 
 
 def customer_service():
@@ -36,10 +37,11 @@ def departure_file_loaded(session,mws,pepper):
     print('********************Depature Answer is ====>',getDepatureAnswer)
 
     if getDepatureAnswer == 'ATM':
-        x = ATM.atm_information_load(session,mws,pepper)
+        ATM.atm_information_load(session,mws,pepper)
+        return True
 
     elif getDepatureAnswer == 'LFO':
-        lfo.load_lfo(session,mws,pepper) 
+        lfo.load_lfo(session,mws,pepper)
         return True
 
     elif getDepatureAnswer == 'FI':
@@ -48,7 +50,8 @@ def departure_file_loaded(session,mws,pepper):
 
 
     elif getDepatureAnswer == 'CST':
-        mws.run_interaction(customer_service)
+        customerService.customerservice_load(session,mws,pepper)
+        return True
 
     elif getDepatureAnswer == 'EFC':
         mws.run_interaction(entertainment)

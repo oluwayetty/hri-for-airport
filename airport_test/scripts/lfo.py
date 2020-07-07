@@ -14,6 +14,12 @@ def lfo_reached():
     im.display.loadUrl('lfo_reached.html')
     im.executeModality('text_default','This is the <b> LOST AND FOUND OFFICE </b>')
 
+def lfo_together():
+    im.display.loadUrl('lfo_reached.html')
+    im.executeModality('text_default',' Please follow me to reach <br> the <b> LOST AND FOUND OFFICE </b>')
+    time.sleep(2)
+
+
 
 def show_lfo_office(pepper):
     pepper.goToPosture('StandZero',0.2)
@@ -50,5 +56,6 @@ def show_lfo_office(pepper):
 
 def load_lfo(session,mws,pepper):
 
+    mws.run_interaction(lfo_together)
     show_lfo_office(pepper)
     mws.run_interaction(lfo_reached)

@@ -85,6 +85,6 @@ def atm_information_load(session,mws,pepper):
     time.sleep(3)
 
 
-    mws.run_interaction(atmReached)
+    #mws.run_interaction(atmReached)
 
-    #return False
+    #return True
