@@ -19,6 +19,8 @@ def lfo_together():
     im.executeModality('text_default',' Please follow me to reach <br> the <b> LOST AND FOUND OFFICE </b>')
     time.sleep(2)
 
+
+
 def show_lfo_office(pepper):
     pepper.goToPosture('StandZero',0.2)
 

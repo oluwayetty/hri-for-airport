@@ -65,7 +65,7 @@ def customerservice_load(session,mws,pepper):
     memory_service = session.service('ALMemory')
 
     mws.run_interaction(customer_service)
-
+    pepper.goToPosture('StandInit',0.3)
     airlines_name = memory_service.getData('airlines_name')
     hand='left'
 

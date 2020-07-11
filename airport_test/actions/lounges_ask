@@ -1,0 +1,26 @@
+# Input for Lounges
+
+TEXT_title
+<*,*,it,*>: Lounges Section
+<*,*,*,*>:  Lounges Section
+----
+IMAGE_default
+<*, *, *, *>:  img/lounge_logo.jpg
+----
+TTS
+<*,*,*,*>:  Please select the lounge you wish to visit.
+----
+TEXT_default
+<*,*,*,*>:  Please select the lounge you wish to visit.
+----
+ASR
+<*,*,*,*>:  { 'premiumplaza': ['Premium Plaza Lounge'],'primavista': ['Prima Vista Lounge'],'casaalitalia':['Casa Alitalia']}
+----
+BUTTONS
+premiumplaza
+<*,*,*,*>: img/premium_logo.jpg
+primavista
+<*,*,*,*>: img/vista_logo.jpg
+casaalitalia
+<*,*,*,*>: img/casa_logo.jpg
+----

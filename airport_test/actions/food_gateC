@@ -1,0 +1,25 @@
+
+TEXT_title
+<*,*,it,*>: Food Courts Section at Gate C
+<*,*,*,*>:  Food Courts Section at Gate C
+----
+IMAGE_default
+<*, *, *, *>:  img/foodcourts_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the restaurant you wish to go!
+----
+TEXT_default
+<*,*,*,*>:  Please select the restaurant you wish to go!
+----
+ASR
+<*,*,*,*>:  {'Rossointenso':['Rossointenso'],'The Burger Federation':['The Burger Federation'],'Bistrot':['Bistrot']}
+----
+BUTTONS
+Rossointenso
+<*,*,*,*>:Rossointenso
+The Burger Federation
+<*,*,*,*>:The Burger Federation
+Bistrot
+<*,*,*,*>:Bistrot
+----

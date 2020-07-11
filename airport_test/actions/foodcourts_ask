@@ -1,0 +1,25 @@
+
+TEXT_title
+<*,*,it,*>: Food Courts Section
+<*,*,*,*>:  Food Courts Section
+----
+IMAGE_default
+<*, *, *, *>:  img/foodcourts_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the Gate for your terminal
+----
+TEXT_default
+<*,*,*,*>:  Please select the Gate for your terminal
+----
+ASR
+<*,*,*,*>:  { 'B':['Gate B'],'C':['Gate C'],'D':['Gate D']}
+----
+BUTTONS
+B
+<*,*,*,*>: Gate B
+C
+<*,*,*,*>: Gate C
+D
+<*,*,*,*>: Gate D
+----

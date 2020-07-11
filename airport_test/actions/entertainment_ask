@@ -1,0 +1,26 @@
+# Input for Selection of Entertainment
+
+TEXT_title
+<*,*,it,*>: Entertainment and Food Section
+<*,*,*,*>:  Entertainment and Food Section
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the service you wish.
+----
+TEXT_default
+<*,*,*,*>:  Please select the service you wish.
+----
+ASR
+<*,*,*,*>:  { 'lounges': ['Lounges','show lounges'],'foodcourts': ['Food Courts','show Food Courts'],'entertainment':['entertainment','show me entertainment']}
+----
+BUTTONS
+lounges
+<*,*,*,*>: img/lounges1.jpg
+foodcourts
+<*,*,*,*>: img/foodcourts1.jpg
+entertainment
+<*,*,*,*>: img/entertainment1.jpg
+----

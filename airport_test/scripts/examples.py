@@ -9,6 +9,7 @@ import ws_client
 import qi
 import departure_python
 import arrivals
+import transit_python
 from qibullet import SimulationManager
 
 # Definition of interaction functions
@@ -77,6 +78,17 @@ def arrival_operations():
             break
     im.robot.memory_service.insertData('arrivalAnswer',arrival_choice)
 
+def transit_operations():
+    while True:
+        im.display.loadUrl('transit.html')
+        transit_choice = im.ask('transit_details')
+        if transit_choice!='timeout':
+            im.executeModality('TEXT_default',transit_choice)
+            break
+    im.robot.memory_service.insertData('transitAnswer',transit_choice)
+
+
+
 def getQiApp():
     try:
         connection_url = 'tcp://'+os.environ['PEPPER_IP']+':'+str(9559)
@@ -109,31 +121,42 @@ if __name__ == "__main__":
     memory_service = session.service('ALMemory')
 
 
-    simulation_manager = SimulationManager()
-    client = simulation_manager.launchSimulation(gui=True)
-    pepper= simulation_manager.spawnPepper(client,spawn_ground_plane=True)
+    try:
+        simulation_manager = SimulationManager()
+        client = simulation_manager.launchSimulation(gui=True)
+        pepper= simulation_manager.spawnPepper(client,spawn_ground_plane=True)
 
-    def chec():
-        mws.run_interaction(load_modim)
-        mws.run_interaction(ee_test)
+        def chec():
+            mws.run_interaction(load_modim)
+            mws.run_interaction(ee_test)
 
-        getConvCheck = memory_service.getData('beginConv')
-        if getConvCheck:
-            mws.run_interaction(choose_mode)
-        modeCheck = memory_service.getData('mode')
-        print('mode got',modeCheck)
-        if modeCheck == 'Departures' and getConvCheck:
-            mws.run_interaction(departure_operations)
-            x = departure_python.departure_file_loaded(session,mws,pepper)
-            if not x:
-                chec()
-        elif modeCheck == 'Arrivals' and getConvCheck:
-            mws.run_interaction(arrival_operations)
-            callback = arrivals.arrival_file_loaded(session,mws,pepper)
-            if not callback:
-                chec()
+            getConvCheck = memory_service.getData('beginConv')
+            if getConvCheck:
+                mws.run_interaction(choose_mode)
+            modeCheck = memory_service.getData('mode')
+            print('mode got',modeCheck)
+            if modeCheck == 'Departures' and getConvCheck:
+                mws.run_interaction(departure_operations)
+                x = departure_python.departure_file_loaded(session,mws,pepper)
+                if not x:
+                    chec()
+            elif modeCheck == 'Arrivals' and getConvCheck:
+                mws.run_interaction(arrival_operations)
+                callback = arrivals.arrival_file_loaded(session,mws,pepper)
+                if not callback:
+                    chec()
+            elif modeCheck == 'Transits' and getConvCheck:
+                mws.run_interaction(transit_operations)
+                callback = transit_python.transit_file_loaded(session,mws,pepper)
+                if not callback:
+                    chec()
 
 
-    chec()
 
-    simulation_manager.stopSimulation(client)
+        chec()
+    except Exception as e:
+        print('\n\n\n ****Error occurred',e)
+
+    finally:
+        app.stop()
+        simulation_manager.stopSimulation(client)

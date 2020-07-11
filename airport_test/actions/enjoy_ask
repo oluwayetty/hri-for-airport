@@ -1,0 +1,26 @@
+# Input for Entertainment
+
+TEXT_title
+<*,*,it,*>: HOW CAN I MAKE YOU RELAX
+<*,*,*,*>:  HOW CAN I MAKE YOU RELAX
+----
+IMAGE_default
+<*, *, *, *>:  img/ent_logo.gif
+----
+TTS
+<*,*,*,*>:  Please select your choice
+----
+TEXT_default
+<*,*,*,*>:  Please select your choice
+----
+ASR
+<*,*,*,*>:  {'joke':['Share me a joke'],'dance':['Let\'s Dance'],'sing':['Play a song']}
+----
+BUTTONS
+joke
+<*,*,*,*>: Share me a joke
+dance
+<*,*,*,*>: Let's Dance
+sing
+<*,*,*,*>: Play a song
+----

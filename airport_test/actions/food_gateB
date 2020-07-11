@@ -1,0 +1,25 @@
+
+TEXT_title
+<*,*,it,*>: Food Courts Section at Gate B
+<*,*,*,*>:  Food Courts Section at Gate B
+----
+IMAGE_default
+<*, *, *, *>:  img/foodcourts_logo.png
+----
+TTS
+<*,*,*,*>:  Please select the restaurant you wish to go!
+----
+TEXT_default
+<*,*,*,*>:  Please select the restaurant you wish to go!
+----
+ASR
+<*,*,*,*>:  {'Ferrari Spazio Bollicine':['Ferrari Spazio Bollicine'],'Venchi':['Venchi'],'Lavazza Moka':['Lavazza Mokà']}
+----
+BUTTONS
+Ferrari Spazio Bollicine
+<*,*,*,*>:Ferrari Spazio Bollicine
+Venchi
+<*,*,*,*>:Venchi
+Lavazza Moka
+<*,*,*,*>:Lavazza Mokà
+----

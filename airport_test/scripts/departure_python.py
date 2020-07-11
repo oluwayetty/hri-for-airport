@@ -12,25 +12,15 @@ import flight_information
 import lfo
 import ATM
 import customerService
+import entertainment_load
 
 
 def customer_service():
     print('customer service')
 
 
-
-def entertainment():
-    print('entertainment and food section')
-
-
 def departure_file_loaded(session,mws,pepper):
 
-    # connect to local MODIM server
-    '''
-    mws = ModimWSClient()
-    mws.setDemoPathAuto(__file__)
-    '''
-    #session= app.session
     memory_service = session.service('ALMemory')
 
     getDepatureAnswer = memory_service.getData('departureAnswer')
@@ -54,4 +44,5 @@ def departure_file_loaded(session,mws,pepper):
         return True
 
     elif getDepatureAnswer == 'EFC':
-        mws.run_interaction(entertainment)
+        entertainment_load.entertainment_py_load(session,mws,pepper)
+        return False

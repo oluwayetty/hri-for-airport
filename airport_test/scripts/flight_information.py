@@ -82,6 +82,7 @@ def display_flights_information():
     im.executeModality('text_distance',get_flight_details[8])
     im.executeModality('text_time',get_flight_details[7])
 
+
     #['NK',612,'LAS','MSP',25,19.0,181,154.0,1299,526,509.0]
 def display_conveyor_information():
     im.display.loadUrl('conveyor_info.html')
@@ -142,6 +143,7 @@ def bye_bye_movement(pepper):
         time.sleep(1)
     time.sleep(3)
     return
+
 
 #if __name__=='__main__':
 def flight_information_load(session,mws,pepper,conveyor_mode=False):
