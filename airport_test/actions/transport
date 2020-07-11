@@ -1,0 +1,20 @@
+# Transport Details
+
+TEXT_title
+<*,*,it,*>: Transport Details
+<*,*,*,*>:  Transport Details
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+BUTTONS
+CAB
+<*,*,it,*>: I want to go by Cab img/lufthansa_logo.jpg
+<*,*,*,*>: I want to go by Cab img/lufthansa_logo.jpg
+TR
+<*,*,it,*>: I want to go by Train img/lufthansa_logo.jpg
+<*,*,*,*>: I want to go by Train img/lufthansa_logo.jpg
+BUS
+<*,*,it,*>: I want to go by Bus/Coach img/lufthansa_logo.jpg
+<*,*,*,*>:  I want to go by Bus/Coach img/lufthansa_logo.jpg
+----

@@ -10,10 +10,10 @@ import qi
 import pandas as pd
 import examples as main_export
 from ATM import pointhand
+
 '''
 https://www.kaggle.com/usdot/flight-delays
 '''
-
 
 def flight_information():
 
@@ -43,7 +43,6 @@ def flight_information():
                 im.robot.memory_service.insertData('airline_name',airline_name)
                 im.robot.memory_service.insertData('flight_number',fn)
                 break
-
 
 def load_data(name_airline,flight_number):
     dt = pd.DataFrame(pd.read_csv('/home/robot/playground/Airport-Scenario-HRI/airport_test/database/flights/flights2.csv',
