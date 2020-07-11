@@ -9,6 +9,7 @@ import ws_client
 import qi
 import pandas as pd
 import examples as main_export
+from ATM import pointhand
 '''
 https://www.kaggle.com/usdot/flight-delays
 '''
@@ -30,28 +31,26 @@ def flight_information():
             break
         '''
         if airline_name!= '' and airline_name!='timeout':
-            t = 'The Airline you travelling is '+ airline_name
+            t = 'You Airline is '+ airline_name
             im.executeModality('text_airline',t)
             time.sleep(1)
             im.executeModality('text_fn','Please tell me your flight Number')
             im.executeModality('BUTTONS',[['98','98'],['2336','2336']  ,[ '840','840'  ],[ '258','258'  ],[ '135','135'  ],[ '806','806'  ],[ '612','612'  ],['2013','2013'  ],['1112','1112'  ],['1173','1173'  ],['2336','2336'  ],['1674','1674'  ],['1434','1434'  ],['2324','2324'  ],['2440','2440'  ],[ '108','108'  ],['1560','1560'  ],['1197','1197'  ],[ '122','122'  ],['1670','1670'  ],[ '520','520']])
             fn = im.ask(actionname=None,timeout=50)
             if fn!='timeout' and fn!='':
-                t = 'The Flight you travelling is '+ fn
+                t = 'Your Flight is '+ fn
                 im.executeModality('text_fn',t)
                 im.robot.memory_service.insertData('airline_name',airline_name)
                 im.robot.memory_service.insertData('flight_number',fn)
                 break
 
 
-
-
 def load_data(name_airline,flight_number):
-    dt = pd.DataFrame(pd.read_csv('/home/robot/playground/Airport-Scenario-HRI/airport_test/database/flights/flights.csv',usecols=['AIRLINE','FLIGHT_NUMBER','ORIGIN_AIRPORT','DESTINATION_AIRPORT',
-    'SCHEDULED_DEPARTURE', 'DEPARTURE_TIME','SCHEDULED_TIME',
-    'AIR_TIME','DISTANCE','SCHEDULED_ARRIVAL', 'ARRIVAL_TIME'],nrows=100))
+    dt = pd.DataFrame(pd.read_csv('/home/robot/playground/Airport-Scenario-HRI/airport_test/database/flights/flights2.csv',
+    usecols=['AIRLINE','FLIGHT_NUMBER','ORIGIN_AIRPORT','DESTINATION_AIRPORT',
+    'SCHEDULED_DEPARTURE', 'DEPARTURE_TIME','SCHEDULED_TIME','AIR_TIME','DISTANCE',
+    'SCHEDULED_ARRIVAL', 'ARRIVAL_TIME', 'CONVEYOR_NUM', 'CONVEYOR_LOCATION'],nrows=100))
 
-    #dataframe = pd.DataFrame(pd.read_csv('../database/flights/flights.csv'))
     dataframe = dt
     table = pd.DataFrame(dt,columns=['AIRLINE','FLIGHT_NUMBER'])
     loc = table[(table['AIRLINE']==name_airline) & table['FLIGHT_NUMBER'].isin([str(flight_number)])].index.values
@@ -66,8 +65,7 @@ def load_data(name_airline,flight_number):
     else:
         return ('not done',None)
 
-
-
+# def move_to_conveyor():
 
 def display_flights_information():
     im.display.loadUrl('flight_information.html')
@@ -84,9 +82,24 @@ def display_flights_information():
     im.executeModality('text_distance',get_flight_details[8])
     im.executeModality('text_time',get_flight_details[7])
 
-
     #['NK',612,'LAS','MSP',25,19.0,181,154.0,1299,526,509.0]
+def display_conveyor_information():
+    im.display.loadUrl('conveyor_info.html')
+    get_flight_details = im.robot.memory_service.getData('flights_data')
+    get_flight_details = get_flight_details[1:-1].split(',')
+    im.executeModality('text_airline',get_flight_details[0])
+    im.executeModality('text_fn',get_flight_details[1])
+    im.executeModality('text_conveyor',get_flight_details[11])
+    im.executeModality('text_location',get_flight_details[12])
+    escort_to_conveyor = im.ask('conveyor_info')
+    if escort_to_conveyor!='timeout':
+        im.executeModality('TEXT_default',escort_to_conveyor)
+        im.executeModality('TEXT_default','Lets go to conveyor {} together'.format(get_flight_details[11]))
 
+    #['NK',612,'LAS','MSP',25,19.0,181,154.0,1299,526,509.0, 6, 2-0-5]
+
+def conveyor_reached():
+    im.executeModality('TEXT_default','Here is where you can find your luggages, enjoy the ride to your destination')
 
 def data_not_found():
     im.executeModality('TEXT_default','Sorry I could not find your flight details')
@@ -130,9 +143,8 @@ def bye_bye_movement(pepper):
     time.sleep(3)
     return
 
-
 #if __name__=='__main__':
-def flight_information_load(session,mws,pepper):
+def flight_information_load(session,mws,pepper,conveyor_mode=False):
 
     memory_service = session.service('ALMemory')
     mws.run_interaction(flight_information)
@@ -156,7 +168,7 @@ def flight_information_load(session,mws,pepper):
     Name: 55, dtype: object
     '''
 
-    if status!='not done':
+    if status!='not done' and conveyor_mode == False:
         x = str(data_flights.tolist())
 
         memory_service.insertData('flights_data',x)
@@ -165,8 +177,20 @@ def flight_information_load(session,mws,pepper):
         mws.run_interaction(happyJouney)
         bye_bye_movement(pepper)
         return True
+    elif status!='not done' and conveyor_mode == True:
+        x = str(data_flights.tolist())
 
-
+        memory_service.insertData('flights_data',x)
+        mws.run_interaction(display_conveyor_information)
+        #
+        pepper.moveTo(-2,6,0.5,speed=0.5)
+        time.sleep(5)
+        pointhand(hand='right',pepper=pepper)
+        #
+        mws.run_interaction(conveyor_reached)
+        time.sleep(2)
+        bye_bye_movement(pepper)
+        return True
     else:
         mws.run_interaction(data_not_found)
         time.sleep(2)

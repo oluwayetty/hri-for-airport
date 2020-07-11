@@ -9,11 +9,14 @@ import ws_client
 import qi
 from qibullet import SimulationManager
 
+def walk_to_trolley():
+    im.display.loadUrl('default.html')
+    im.executeModality('text_default',' Please follow me to reach <br> the <b> TROLLEYS LOCATION </b>')
+    time.sleep(2)
 
 def trolley_reached():
     im.display.loadUrl('default.html')
     im.executeModality('text_default','This is where you can pick <b> TROLLEYS </b> for your baggages.')
-
 
 def show_trolley_location(pepper):
     pepper.goToPosture('StandZero',0.2)
@@ -47,5 +50,6 @@ def show_trolley_location(pepper):
     return
 
 def load_trolley_direction(session,mws,pepper):
+    mws.run_interaction(walk_to_trolley)
     show_trolley_location(pepper)
     mws.run_interaction(trolley_reached)

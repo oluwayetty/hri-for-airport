@@ -45,7 +45,7 @@ def departure_file_loaded(session,mws,pepper):
         return True
 
     elif getDepatureAnswer == 'FI':
-        x = flight_information.flight_information_load(session,mws,pepper)
+        x = flight_information.flight_information_load(session,mws,pepper,conveyor_mode=False)
         return x
 
 
