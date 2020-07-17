@@ -72,27 +72,27 @@ def load_trolley_direction(session,mws,pepper):
     show_trolley_location(pepper,3,5,0.5)
     mws.run_interaction(trolley_reached)
 
+def boutique_category():
+    im.display.loadUrl('category.html')
+    im.executeModality('text_default', "Kindly select the category that suits you best.")
 
-# def load_transport_mode(session,mws,pepper):
-    # mws.run_interaction(display_transport_information)
+    getCategory = im.ask('category')
+    print('********************Response Answer is ====>',getCategory)
+    if getCategory == 'Male':
+        im.setProfile(['senior', 'm', 'it', '*'])
+        im.executeModality('text_default', "This is the map to get you to the male boutique arena, goodbye!")
+        time.sleep(1)
+        loadMap = im.ask('load_map')
+    elif getCategory == 'Female':
+        im.setProfile(['senior', 'f', 'it', '*'])
+        im.executeModality('text_default', "This is the map to get you to the female boutique arena, goodbye!")
+        time.sleep(1)
+        loadMap = im.ask('load_map')
+    elif getCategory == 'Kids':
+        im.setProfile(['junior', '*', 'it', '*'])
+        im.executeModality('text_default', "This is the map to get you to the kids boutique arena, goodbye!")
+        time.sleep(1)
+        loadMap = im.ask('load_map')
 
-def washroom_gender():
-    im.display.loadUrl('gender.html')
-    im.executeModality('text_default', "Kindly select your gender below")
-
-    # memory_service = session.service('ALMemory')
-
-    # getGender = memory_service.getData('gender')
-
-    getGender = im.ask('gender')
-    # if arrival_choice!='timeout':
-    print('********************Response Answer is ====>',getGender)
-    if getGender == 'Male':
-        im.setProfile(['*', 'm', 'it', '*'])
-        # return True
-    elif getGender == 'Female':
-        im.setProfile(['*', 'f', 'it', '*'])
-        # return True
-
-def washroom_map(session,mws,pepper):
-    mws.run_interaction(washroom_gender)
+def boutique_maps(session,mws,pepper):
+    mws.run_interaction(boutique_category)

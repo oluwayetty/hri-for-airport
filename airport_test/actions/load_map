@@ -1,0 +1,5 @@
+IMAGE_map
+<senior,m,it,*>:  img/map1.jpeg
+<senior,f,it,*:  img/map2.jpeg
+<junior, *, it, *>:  img/map3.jpeg
+----

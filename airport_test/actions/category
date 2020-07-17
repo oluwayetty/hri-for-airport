@@ -1,0 +1,25 @@
+# Category Details
+
+TEXT_title
+<*,*,it,*>: Gender Details
+<*,*,*,*>:  Gender Details
+----
+IMAGE_default
+<*, *, *, *>:  img/airport_logo.png
+----
+IMAGE_map
+<senior,m,it,*>:  img/map1.jpeg
+<senior,f,it,*:  img/map2.jpeg
+<junior, *, it, *>:  img/map3.jpeg
+----
+BUTTONS
+Male
+<*,*,it,*>: Men boutique
+<*,*,*,*>: Men boutique
+Female
+<*,*,it,*>: Female Boutique
+<*,*,*,*>: Female Boutique
+Kids
+<*, *, it, *>: Kids
+<*, *, *, *>: Kids
+----

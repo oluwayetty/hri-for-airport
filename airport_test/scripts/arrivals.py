@@ -61,5 +61,5 @@ def arrival_file_loaded(session,mws,pepper):
         # arrival_movement.load_transport_mode(session,mws,pepper)
         return True
     elif getArrivalAnswer == 'MAP':
-        arrival_movement.washroom_map(session,mws,pepper)
+        arrival_movement.boutique_maps(session,mws,pepper)
         return True
