@@ -21,6 +21,6 @@ TP
 <*,*,it,*>: Transport spot
 <*,*,*,*>:  Transport spot
 MAP
-<*,*,it,*>: Destination map
-<*,*,*,*>:  Destination map
+<*,*,it,*>: Washroom map
+<*,*,*,*>:  Washroom map
 ----

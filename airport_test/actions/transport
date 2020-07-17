@@ -9,12 +9,12 @@ IMAGE_default
 ----
 BUTTONS
 CAB
-<*,*,it,*>: I want to go by Cab img/lufthansa_logo.jpg
-<*,*,*,*>: I want to go by Cab img/lufthansa_logo.jpg
+<*,*,it,*>: I want to go by Cab
+<*,*,*,*>: I want to go by Cab
 TR
-<*,*,it,*>: I want to go by Train img/lufthansa_logo.jpg
-<*,*,*,*>: I want to go by Train img/lufthansa_logo.jpg
+<*,*,it,*>: I want to go by Train
+<*,*,*,*>: I want to go by Train
 BUS
-<*,*,it,*>: I want to go by Bus/Coach img/lufthansa_logo.jpg
-<*,*,*,*>:  I want to go by Bus/Coach img/lufthansa_logo.jpg
+<*,*,it,*>: I want to go by Bus/Coach
+<*,*,*,*>:  I want to go by Bus/Coach
 ----

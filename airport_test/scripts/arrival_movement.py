@@ -50,19 +50,21 @@ def show_trolley_location(pepper,x,y,z):
     time.sleep(3)
     return
 
+def move(pepper,x,y,z):
+    pepper.moveTo(x,y,z,speed=1.5)
+
 def display_transport_information():
     im.display.loadUrl('transport.html')
     im.executeModality('text_default','Here are the ways you can reach your destination from FIO.')
-    preferred_transport = im.ask('transport')
-    if preferred_transport == 'CAB':
-        location = [-2,0,2]
-        mws.run_interaction(show_trolley_location(pepper,-2,0,2))
-        # return True
-    elif preferred_transport == "TR":
-        location = [-5,0,4]
-    #     return True
-    elif preferred_transport == "BUS":
-        location = [-4,0,6]
+    # preferred_transport = im.ask('transport')
+    # if preferred_transport == 'CAB':
+    #     location = [-2,0,2]
+    #     # return True
+    # elif preferred_transport == "TR":
+    #     location = [-5,0,4]
+    # #     return True
+    # elif preferred_transport == "BUS":
+    #     location = [-4,0,6]
     # return True
 
 def load_trolley_direction(session,mws,pepper):
@@ -70,6 +72,27 @@ def load_trolley_direction(session,mws,pepper):
     show_trolley_location(pepper,3,5,0.5)
     mws.run_interaction(trolley_reached)
 
-def load_transport_mode(session,mws,pepper):
-    mws.run_interaction(display_transport_information)
-    # move(pepper)
+
+# def load_transport_mode(session,mws,pepper):
+    # mws.run_interaction(display_transport_information)
+
+def washroom_gender():
+    im.display.loadUrl('gender.html')
+    im.executeModality('text_default', "Kindly select your gender below")
+
+    # memory_service = session.service('ALMemory')
+
+    # getGender = memory_service.getData('gender')
+
+    getGender = im.ask('gender')
+    # if arrival_choice!='timeout':
+    print('********************Response Answer is ====>',getGender)
+    if getArrivalAnswer == 'Male':
+        im.setProfile(['*', 'm', 'it', '*'])
+        # return True
+    elif getArrivalAnswer == 'Female':
+        im.setProfile(['*', 'f', 'it', '*'])
+        # return True
+
+def washroom_map(session,mws,pepper):
+    mws.run_interaction(washroom_gender)
