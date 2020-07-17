@@ -87,10 +87,10 @@ def washroom_gender():
     getGender = im.ask('gender')
     # if arrival_choice!='timeout':
     print('********************Response Answer is ====>',getGender)
-    if getArrivalAnswer == 'Male':
+    if getGender == 'Male':
         im.setProfile(['*', 'm', 'it', '*'])
         # return True
-    elif getArrivalAnswer == 'Female':
+    elif getGender == 'Female':
         im.setProfile(['*', 'f', 'it', '*'])
         # return True
 
