@@ -56,16 +56,16 @@ def move(pepper,x,y,z):
 def display_transport_information():
     im.display.loadUrl('transport.html')
     im.executeModality('text_default','Here are the ways you can reach your destination from FIO.')
-    # preferred_transport = im.ask('transport')
-    # if preferred_transport == 'CAB':
-    #     location = [-2,0,2]
-    #     # return True
-    # elif preferred_transport == "TR":
-    #     location = [-5,0,4]
-    # #     return True
-    # elif preferred_transport == "BUS":
-    #     location = [-4,0,6]
-    # return True
+    preferred_transport = im.ask('transport')
+    if preferred_transport == 'CAB':
+        location = [-2,0,2]
+    elif preferred_transport == "TR":
+        location = [-5,0,4]
+    elif preferred_transport == "BUS":
+        location = [-4,0,6]
+
+def load_transport_mode(session,mws,pepper):
+    mws.run_interaction(display_transport_information)
 
 def load_trolley_direction(session,mws,pepper):
     mws.run_interaction(walk_to_trolley)
