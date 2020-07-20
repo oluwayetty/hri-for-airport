@@ -10,6 +10,10 @@ IMAGE_default
 TTS
 <*,*,*,*>:  You have chosen Arrivals. I hope you had a great flight, How may I help you?
 ----
+ASR
+<*,*,it,*>: { 'FT': ['Where can I pick the Trolleys', 'Trolley', 'Heavy luggages', 'Luggages are heavy'], 'CBL': ['Where is the Conveyor number for my flight', 'Conveyor number', 'Where can I pick my bags', 'conveyor'],'TP':['Transportation','Destination','Taxi','How can I get to the city','Nearby Transport','I need a cab','Where is the train','Where can I find coach'],'SHOP':['Window shopping','shopping','where to buy some clothes','New clothes'] }
+<*,*,*,*>: { 'FT': ['Where can I pick the Trolleys','Trolley','Heavy luggages','Luggages are heavy'], 'CBL': ['Where is the Conveyor number for my flight', 'Conveyor number', 'Where can I pick my bags', 'conveyor'],'TP':['Transportation','Destination','Taxi','How can I get to the city', 'Nearby Transport','I need a cab','Where is the train','Where can I find coach'],'SHOP':['Window shopping','shopping','where to buy some clothes','New clothes'] }
+----
 BUTTONS
 FT
 <*,*,it,*>: Find Trolleys
@@ -20,7 +24,7 @@ CBL
 TP
 <*,*,it,*>: Transport spot
 <*,*,*,*>:  Transport spot
-MAP
+SHOP
 <*,*,it,*>: Boutique Corner
 <*,*,*,*>:  Boutique Corner
 ----

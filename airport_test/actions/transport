@@ -7,6 +7,10 @@ TEXT_title
 IMAGE_default
 <*, *, *, *>:  img/airport_logo.png
 ----
+ASR
+<*,*,it,*>: { 'CAB': ['Where can I pick a Cab', 'Cab', 'Taxi'],'TR':['Where can I pick a Train', 'train', 'train station','Where is the train'],'BUS':['Where can I pick a Bus', 'bus', 'bus station','Where is the coach'] }
+<*,*,*,*>: { 'CAB': ['Where can I pick a Cab', 'Cab', 'Taxi'],'TR':['Where can I pick a Train', 'train', 'train station','Where is the train'],'BUS':['Where can I pick a Bus', 'bus', 'bus station','Where is the coach'] }
+----
 BUTTONS
 CAB
 <*,*,it,*>: I want to go by Cab

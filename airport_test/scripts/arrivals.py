@@ -7,10 +7,8 @@ sys.path.append(pdir + '/src/GUI')
 from ws_client import *
 import ws_client
 import qi
-from qibullet import SimulationManager
 import arrival_movement
 import flight_information
-
 
 def arrival_file_loaded(session,mws,pepper):
 
@@ -34,6 +32,6 @@ def arrival_file_loaded(session,mws,pepper):
     elif getArrivalAnswer == 'TP':
         arrival_movement.load_transport_mode(session,mws,pepper)
         return True
-    elif getArrivalAnswer == 'MAP':
+    elif getArrivalAnswer == 'SHOP':
         arrival_movement.boutique_maps(session,mws,pepper)
         return True

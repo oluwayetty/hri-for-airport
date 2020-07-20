@@ -8,9 +8,13 @@ IMAGE_default
 <*, *, *, *>:  img/airport_logo.png
 ----
 IMAGE_map
-<senior,m,it,*>:  img/map1.jpeg
-<senior,f,it,*:  img/map2.jpeg
-<junior, *, it, *>:  img/map3.jpeg
+<senior,m,it,*>:  img/airport_map.png
+<senior,f,it,*:  img/airport_map.png
+<junior, *, it, *>:  img/airport_map.png
+----
+ASR
+<*,*,it,*>: { 'Male': ['Male', 'Male Boutique', 'Men Boutique', 'Men'], 'Female': ['Female', 'Female Boutique', 'Women Boutique', 'Women'],'Kids':['Kids', 'Children Boutique', 'Kids Boutique', 'Children'] }
+<*,*,*,*>: { 'Male': ['Male', 'Male Boutique', 'Men Boutique', 'Men'], 'Female': ['Female', 'Female Boutique', 'Women Boutique', 'Women'],'Kids':['Kids', 'Children Boutique', 'Kids Boutique', 'Children'] }
 ----
 BUTTONS
 Male

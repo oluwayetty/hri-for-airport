@@ -1,5 +1,9 @@
 # Conveyor Details
 
+ASR
+<*,*,it,*>: { 'CNUM': ['Conveyor number', 'Conveyor belt', 'Where to pick my luggage', 'Conveyor'] }
+<*,*,*,*>: { 'CNUM': ['Conveyor number', 'Conveyor belt', 'Where to pick my luggage', 'Conveyor'] }
+----
 BUTTONS
 CNUM
 <*,*,it,*>: Take me to my Conveyor Number

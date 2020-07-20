@@ -51,21 +51,33 @@ def show_trolley_location(pepper,x,y,z):
     return
 
 def move(pepper,x,y,z):
-    pepper.moveTo(x,y,z,speed=1.5)
+    pepper.moveTo(x,y,z,speed=1)
 
 def display_transport_information():
     im.display.loadUrl('transport.html')
-    im.executeModality('text_default','Here are the ways you can reach your destination from FIO.')
+    im.executeModality('text_default','Click your preferred transport mode and I will take you there.')
     preferred_transport = im.ask('transport')
-    if preferred_transport == 'CAB':
-        location = [-2,0,2]
-    elif preferred_transport == "TR":
-        location = [-5,0,4]
-    elif preferred_transport == "BUS":
-        location = [-4,0,6]
+    im.robot.memory_service.insertData('tt_loc',preferred_transport)
+
+def point_to_direction():
+    im.display.loadUrl('transport.html')
+    im.executeModality('text_default','Here you go, have a safe trip and goodbye')
 
 def load_transport_mode(session,mws,pepper):
     mws.run_interaction(display_transport_information)
+    m_s = session.service('ALMemory')
+    preferred_transport = m_s.getData('tt_loc')
+    if preferred_transport == 'CAB':
+        location = [-2,0,0.58]
+    elif preferred_transport == "TR":
+        location = [-5,0,0.38]
+    elif preferred_transport == "BUS":
+        location = [-4,0,0.28]
+    move(pepper,location[0],location[1],location[2])
+    time.sleep(1)
+    mws.run_interaction(point_to_direction)
+    return
+
 
 def load_trolley_direction(session,mws,pepper):
     mws.run_interaction(walk_to_trolley)
@@ -80,17 +92,17 @@ def boutique_category():
     print('********************Response Answer is ====>',getCategory)
     if getCategory == 'Male':
         im.setProfile(['senior', 'm', 'it', '*'])
-        im.executeModality('text_default', "This is the map to get you to the male boutique arena, goodbye!")
+        im.executeModality('text_default', "This is the map to get you to the male boutique arena which is in T2, goodbye!")
         time.sleep(1)
         loadMap = im.ask('load_map')
     elif getCategory == 'Female':
         im.setProfile(['senior', 'f', 'it', '*'])
-        im.executeModality('text_default', "This is the map to get you to the female boutique arena, goodbye!")
+        im.executeModality('text_default', "This is the map to get you to the female boutique arena which is in T3, goodbye!")
         time.sleep(1)
         loadMap = im.ask('load_map')
     elif getCategory == 'Kids':
         im.setProfile(['junior', '*', 'it', '*'])
-        im.executeModality('text_default', "This is the map to get you to the kids boutique arena, goodbye!")
+        im.executeModality('text_default', "This is the map to get you to the kids boutique arena which is in T1, goodbye!")
         time.sleep(1)
         loadMap = im.ask('load_map')
 

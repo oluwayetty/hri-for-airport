@@ -1,5 +1,5 @@
 IMAGE_map
-<senior,m,it,*>:  img/map1.jpeg
-<senior,f,it,*:  img/map2.jpeg
-<junior, *, it, *>:  img/map3.jpeg
+<senior,m,it,*>:  img/airport_map.png
+<senior,f,it,*:  img/airport_map.png
+<junior, *, it, *>:  img/airport_map.png
 ----
