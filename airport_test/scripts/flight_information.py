@@ -8,7 +8,7 @@ from ws_client import *
 import ws_client
 import qi
 import pandas as pd
-import examples as main_export
+import start_conversation as main_export
 from ATM import pointhand
 
 '''

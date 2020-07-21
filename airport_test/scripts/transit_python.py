@@ -3,7 +3,7 @@ import time
 
 import lfo
 import ATM
-import customerService
+import customer_service as cs
 import entertainment_load
 
 
@@ -24,7 +24,7 @@ def transit_file_loaded(session,mws,pepper):
         return True
 
     elif getTransitAnswer == 'CST':
-        customerService.customerservice_load(session,mws,pepper)
+        cs.customerservice_load(session,mws,pepper)
         return True
 
     elif getTransitAnswer == 'EFC':

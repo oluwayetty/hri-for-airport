@@ -11,7 +11,7 @@ import qi
 import flight_information
 import lfo
 import ATM
-import customerService
+import customer_service as cs
 import entertainment_load
 
 
@@ -40,7 +40,7 @@ def departure_file_loaded(session,mws,pepper):
 
 
     elif getDepatureAnswer == 'CST':
-        customerService.customerservice_load(session,mws,pepper)
+        cs.customerservice_load(session,mws,pepper)
         return True
 
     elif getDepatureAnswer == 'EFC':

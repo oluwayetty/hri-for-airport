@@ -62,7 +62,7 @@ def choose_mode():
 def departure_operations():
     while True:
         im.display.loadUrl('departures.html')
-        departure_choice = im.ask('Departure_details')
+        departure_choice = im.ask('departure_details')
         if departure_choice!='timeout':
             im.executeModality('TEXT_default',departure_choice)
             break

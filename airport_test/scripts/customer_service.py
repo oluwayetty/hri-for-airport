@@ -7,11 +7,8 @@ sys.path.append(pdir + '/src/GUI')
 from ws_client import *
 import ws_client
 
-
-
-
 def customer_service():
-    im.display.loadUrl('customerService_search.html')
+    im.display.loadUrl('customer_service_search.html')
     while True:
         airlines_name = im.ask('customerservice_action')
         if airlines_name!='timeout':
@@ -20,17 +17,12 @@ def customer_service():
             break
 
 def gotoCustomerService():
-
     airlines_name = im.robot.memory_service.getData('airlines_name')
 
     im.executeModality('TEXT_default','Lets Go to the  <b> '+airlines_name.upper()+' </b> Customer Service <br> TOGETHER')
     im.executeModality('image_default',im.robot.memory_service.getData('flightImage'))
 
-
-
-def reached_customerService():
-    #im.display.loadUrl('ATM_search.html')
-
+def reached_customer_service():
     im.executeModality('text_csfound','<b>'+im.robot.memory_service.getData('airlines_name').upper()+'</b>')
     im.executeModality('text_default','Your requested Customer Service is HERE')
 
@@ -97,7 +89,7 @@ def customerservice_load(session,mws,pepper):
     time.sleep(1)
     pointhand(hand=hand,pepper=pepper)
 
-    mws.run_interaction(reached_customerService)
+    mws.run_interaction(reached_customer_service)
     time.sleep(3)
 
 
