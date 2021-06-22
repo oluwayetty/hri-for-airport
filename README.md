@@ -13,12 +13,10 @@ We have successfully tried to integrate QIBULLET[4], into the provided framework
 
 We also added a database of flight information, which is used for checking the flight details for a passenger flight based on if they are just arriving or departing, this is to help Pepper answer their questions accurately. To achieve reading the database, we also have included the installation of the PANDAS library in our project. We are also able to play music, make pepper dance, show various locations in 3D format, and also perform MODIM operations using NAOQI commands.
 
-<!-- ![Alt Text](pepper.gif) -->
 <p align="center">
   <img src="pepper.gif" alt="animated" />
 </p>
-The above shows a short animation of the experiment, this is the [link](https://www.youtube.com/watch?v=rrzRVLpOfkg) to see more.
 
 # Motivation for this Project
 As the whole world is busy fighting the consequences of the COVID-19, the number of travellers and tourists have reduced a lot. The major problem faced during this pandemic, is by staff, as well as passengers. Both passengers and staffs of the Airports/Airlines are faced with the challenge of not getting infected as they interact. To overcome this problem, we came up with a unique way of allowing Pepper assist to solve passengers’ queries, which reduces the workload on airport staff as well as trying to keep the virus away from passengers and staff, by reducing human-human transmission.
-Another problem which we have addressed in this project is the tiredness and stress a passenger feels as he keeps travelling from various places, time passenger travel categories and airports, and this can make such passenger stressed out and overwhelmed. Hence, we have also provided an entertainment section which can make the passenger to relax and also increase the metabolism in his body, making the passenger energetic and active.
+Another problem which we have addressed in this project is the tiredness and stress a passenger feels as he keeps travelling from various places, time passenger travel categories and airports, and this can make such passenger stressed out and overwhelmed. Hence, we have also provided an entertainment section which can make the passenger to relax and also increase the metabolism in his body, making the passenger energetic and active. The above shows a short animation of the experiment, this is the [link](https://www.youtube.com/watch?v=rrzRVLpOfkg) to see more.
