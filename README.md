@@ -13,7 +13,10 @@ We have successfully tried to integrate QIBULLET[4], into the provided framework
 
 We also added a database of flight information, which is used for checking the flight details for a passenger flight based on if they are just arriving or departing, this is to help Pepper answer their questions accurately. To achieve reading the database, we also have included the installation of the PANDAS library in our project. We are also able to play music, make pepper dance, show various locations in 3D format, and also perform MODIM operations using NAOQI commands.
 
-![Alt Text](pepper.gif)
+<!-- ![Alt Text](pepper.gif) -->
+<p align="center">
+  <img src="pepper.gif" alt="animated" />
+</p>
 The above shows a short animation of the experiment, this is the [link](https://www.youtube.com/watch?v=rrzRVLpOfkg) to see more.
 
 # Motivation for this Project
